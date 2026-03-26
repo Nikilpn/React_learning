@@ -3,6 +3,7 @@ import './App.css'
 import Todo from './component/Todo';
 import Counter from './component/Counter';
 import Forms from './component/Forms';
+import List from './component/List';
 
 
 
@@ -35,6 +36,8 @@ class App extends Component {
       <Counter />
 
       <Forms />
+
+      <List />
 
       </div>
     )
