@@ -64,6 +64,7 @@ input::placeholder{
 ul li i{
     
     text-align: right;
+    cursor: pointer;
    
 }
 
