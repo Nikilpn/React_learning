@@ -4,34 +4,61 @@ import './Todoapp.css'
 
 export default class Todoapp extends Component {
 
+
   state={
-    input:""
+      input:"",
+      items:[]
+    };
+
+  handleChange=event=>{
+    this.setState({
+      input:event.target.value
+
+
+    });
+
   };
 
-  handleChange=()=>{};
+  storeItems=event=>{
 
+    event.preventDefault();
+    const{input}=this.state;
+
+    this.setState(
+      {
+        items:[...this.state.items,input],
+        input:""
+      }
+    )
+
+  };
 
   render() {
+    const{input,items}=this.state;
+
+    console.log(items)
+
+  
     return (
       <div className='todo-container'>
   
-        <form className='input-section'>
+        <form className='input-section' onSubmit={this.storeItems}>
           <h1>TodoApp</h1>
-          <input type="text" onChange={this.handleChange} placeholder='Enter Items'/>
+          <input type="text" value={input} onChange={this.handleChange} placeholder='Enter Items'/>
      
         </form>
 
-        <ul>
-          <li>item <i className="fa-solid fa-trash"></i>
-          
-          
-          </li>
-
-          <li>item</li>
-        </ul>
-      
+            <ul>
+              {items.map((data, index) => (
+                <li key={index}>
+                  {data}
+                  <i className="fa-solid fa-trash"></i>
+                </li>
+              ))}
+            </ul>
          
       </div>
     )
   }
 }
+
