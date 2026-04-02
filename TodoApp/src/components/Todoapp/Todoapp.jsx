@@ -34,10 +34,16 @@ export default class Todoapp extends Component {
   };
   deleteItem=key=>{
     const allitems=this.state.items;
+
+    console.log("______________")
+
     allitems.splice(key,1)
+
+    
 
     this.setState(
       {
+        
         item:allitems
       }
     )

@@ -12,6 +12,7 @@ export default class App extends Component {
 
         <Routes>
           <Route path="/" exact element={<Todoapp />} />
+
           <Route path="/about" element={<About />} />
         </Routes>
 
