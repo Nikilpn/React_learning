@@ -1,0 +1,69 @@
+-------------------------------------------------------------------------
+                                React
+-------------------------------------------------------------------------
+    React:
+        =>React is a popular opensource web-application -javascript library
+        =>Developed and maintained by facebook(meta)
+        
+        features:
+            =>used to create frontend technology
+            =>based on javascript
+            =>single page application -index.html-dynamically rewrite a new content when user interact
+            =>Declarative application- application which doesnot access the DOM directly
+            =>Virtual DOM-
+                =>.its a copy of real DOM
+                =>.its created by React
+                =>Recouncilation-the process of comparing Virtual dom with the real dom
+                =>Diffing - the process of updating the real dom as that of vitual dom with the help of diffing alogorithm
+            =>Advantages  :avoid the reload the entire application reload after each interaction
+            =>language : jsx-javascript xml - html inside javascript
+            =>component based : basic unit of react application
+            =>Transpiling- the process of converting jsx in to browser understanding language with the help of Babel library
+            =>datasharing : unidirectional -parent to child with the help of a predefined object call props.
+        
+        =>steps to create a project
+        ---------------------------
+        =>npm create vite@latest projectName (npm -node package manager)
+        =>npm create vite@latest projectname -- --template react
+        
+        =>to install npm-npm install
+        =>to run the project -npm run dev
+
+    files
+    ------
+    1.README.md -provide  a description of the react application
+    2.vite.config.js-it give the configuration of vite -react
+    3.package.json -npm configuration -detail of the project
+        =>script -run project
+        =>dependencies -name of the installed library
+    4.package.lock.json Lit includes the version of the installed libraries and its integrity
+    5.node_modules :it contains the copy of the installed libraries
+    (6).gitignore :it contains the name of the file that need to be ignore while adding the code to git 
+    7.eslint.config.js -error handling
+    8.public folder : files or images that need to be access publicity
+
+    jsx-javascript xml
+    --------------------
+    =>it is an js extension for writing html code,used in react to display contents in webpage
+    =>jsx consists of jsx elements
+
+    =>rules of jsx
+    ---------------
+    1.every jsx code must be inside a single tag,it can be a container tag / react fragment (<>  </>)
+    2.every jsx must have a closing tag(starttag-content-endtag )/ self closing tag
+    3.in jsx element attributes, style properties / values must be in a camel case
+    4.in jsx ,attributes like "class" must be written as "className" and "for" as "htmlFor"
+    5.in jsx,we can directly add js code using curly braces {}
+
+    =>components
+    -------------
+    =>react is a collection of components .they are arranged in tree like structure .root node of react is app component
+    =>components are used to create ui .it can be an entire web page or a part of webpage
+    =>To create components,create a file with file name starts with capital letter and also component name must be same as file name 
+    =>ways to create components
+    -----------------------------
+    1.functional based component -react use pure function to build components and it must return jsx
+    2.class based component      -
+
+
+                
