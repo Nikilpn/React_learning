@@ -65,5 +65,17 @@
     1.functional based component -react use pure function to build components and it must return jsx
     2.class based component      -
 
+    Events Haandling in React
+    --------------------------
+    =>Binding function without argument :use function-name only to call the function
+    =>Binding function with argument    :call function using ()=>functionname(arg) 
+    =>Binding function with argument as events :call function using (event)=>functionname(event)
+    
 
                 
+    React props
+    ----------
+    =>used to share data from parent component to its child component .in react only parent component can share data to its child 
+    =>props are properties of a component , props is an object so datas are stored as key value pair
+    =>parent can share its data to its child tag using its attributes
+    =>using "props" as child component function argument,using props we can access data in child  
