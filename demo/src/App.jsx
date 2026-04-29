@@ -2,6 +2,7 @@ import Demo from "./Demo"
 import './App.css'
 import Workerss from "./Workerss"
 import Car from "./Car"
+import Counter from "../Counter"
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
       <div className="p-5">
         <h1 style={{ color: "red", fontSize: "50px" }}>welcome</h1>
 
-
+      <Counter/>
         <Workerss/>
         <Car/>
 

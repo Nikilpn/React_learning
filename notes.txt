@@ -64,7 +64,7 @@
     -----------------------------
     1.functional based component/stateless components -react use pure function to build components and it must return jsx
     2.class based component/State full components   -use js class to build component,it must have render method where we can give jsx code.
-    
+
 
     Events Haandling in React
     --------------------------
@@ -92,4 +92,52 @@
 
     React state
     -----------
-    
+    =>state are used to store values in a component whenever state changes components also get rerender
+
+
+    class based components                                   functional based components
+    ---------------------------------------------------------------------------------------
+    1.use js class to build components                      1.use js pure function
+    2.statefull components                                  2.stateless components
+    3.use constructor for initialising values               3.no need for constructor
+
+
+    life cycle methods of components
+    ---------------------------------
+    3 phases
+
+    1.mounting phase    :putting jsx content in to Dom
+        ->constructor()
+        ->getDerivedStateFromProps()
+        ->render()
+        ->componentDidMount()
+    2.updating phase    :when component get updated
+        ->getDerivedStateFromProps()
+        ->shouldComponentUpdate()
+        ->render()
+        ->getSnapShotBeforeUpdate()
+        ->componentDidMount()
+    3.unmounting phase    :Removing component from Dom
+        ->componentWillUnmount()
+
+    React Hooks
+    ------------
+    =>React Hooks are predefined function for enabling react component features in functional components,all hooks name will start with "use" keyword
+    =>how to use hooks in functional components
+        ---------------------------------------
+        ->import hooks in component
+        ->call hook at top level component
+    =>common hooks
+    -----------------
+        =>useState()  :used to create state in functional components
+                      :useState(initialvalue)
+                      const[setName,stateUpdateFunctionName]=useState(initialvalue)
+
+        =>useEffect()   :used to add side effect to a component
+                useEffect(effect,dependency)
+                ->dependency can be in three ways:
+                    1.no dependency :effect will apply all time in component
+                    2.empty array  : effect will apply only at the creation of the component.
+                    3.[variable_name, ....] :effect will apply not only at the creation of the component but also variable changes in component
+
+
