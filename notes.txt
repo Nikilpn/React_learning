@@ -62,8 +62,9 @@
     =>To create components,create a file with file name starts with capital letter and also component name must be same as file name 
     =>ways to create components
     -----------------------------
-    1.functional based component -react use pure function to build components and it must return jsx
-    2.class based component      -
+    1.functional based component/stateless components -react use pure function to build components and it must return jsx
+    2.class based component/State full components   -use js class to build component,it must have render method where we can give jsx code.
+    
 
     Events Haandling in React
     --------------------------
@@ -79,3 +80,16 @@
     =>props are properties of a component , props is an object so datas are stored as key value pair
     =>parent can share its data to its child tag using its attributes
     =>using "props" as child component function argument,using props we can access data in child  
+
+    Conditional Rendering 
+    ----------------------
+    =>we can control visibility of jsx elements based on a condition ,using truthy or ternary operator.
+
+    handling list in React
+    ---------------------
+    =>To display list in jsx  use "map"  array method .use key props to all duplicating jsx items in list ,key must be unique and used to identify by react dom.
+    
+
+    React state
+    -----------
+    

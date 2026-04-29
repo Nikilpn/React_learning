@@ -1,5 +1,7 @@
 import Demo from "./Demo"
 import './App.css'
+import Workerss from "./Workerss"
+import Car from "./Car"
 
 
 function App() {
@@ -21,8 +23,14 @@ function App() {
 
   return (
     <>
-      <div>
+      <div className="p-5">
         <h1 style={{ color: "red", fontSize: "50px" }}>welcome</h1>
+
+
+        <Workerss/>
+        <Car/>
+
+
         <p id="result">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate incidunt mollitia
           esse quidem reiciendis, harum dolorum
           optio alias facere veniam, autem est totam impedit quo doloribus
@@ -34,7 +42,11 @@ function App() {
         <Demo />
 
 
-        <input type="text" onChange={(event)=>getData(event)} />
+
+        <input type="text" onChange={(event)=>getData(event)} className="form-control mt-3 " />
+
+
+
       </div>
     </>
   )
