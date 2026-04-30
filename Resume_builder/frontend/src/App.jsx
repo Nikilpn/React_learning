@@ -1,23 +1,36 @@
 import { useState } from 'react'
 import './App.css'
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import { FaHome } from "react-icons/fa";
-
+import { Routes, Route } from 'react-router'
+import Header from "./Components/Header"
+import Footer from "./Components/Footer"
+import LandingPage from "./Pages/LandingPage"
+import History from './Pages/History'
+import PageNotFound from './Pages/PageNotFound'
+import ResumeGenerator from './Pages/ResumeGenerator'
+import Form from './Pages/Form'
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <div>
-      <h1 className='text-primary poppins-thin ' ><FaHome /> welcome</h1>
-       <Stack spacing={2} direction="row">
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
-    </Stack>
-    </div>
-      
+      <div>
+        <Header />
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+          <Route path='/history' element={<History />} />
+          <Route path='/form' element={<Form />} />
+          <Route path='/*' element={<PageNotFound />} />
+          <Route path='/resume' element={<ResumeGenerator />} />
+
+
+
+
+        </Routes>
+        <Footer />
+
+
+      </div>
+
     </>
   )
 }
