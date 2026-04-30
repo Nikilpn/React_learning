@@ -8,6 +8,7 @@ import { Route,Routes } from "react-router-dom"
 import Contact from "./pages/Contact"
 import Home from "./pages/Home"
 import About from "./pages/About"
+import Reffer from "./Reffer"
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
     <>
       <div className="p-5">
         <h1 style={{ color: "red", fontSize: "50px" }}>welcome</h1>
+
+        <Reffer/>
 
         <Routes>
           <Route path="/" element={<Home/>}/>

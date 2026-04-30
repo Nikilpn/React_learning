@@ -141,3 +141,38 @@
                     3.[variable_name, ....] :effect will apply not only at the creation of the component but also variable changes in component
 
 
+        =>Hooks can be of two types
+        ----------------------------
+        1.predefined Hooks
+                =>useState()  :used to create state in functional components
+                      :useState(initialvalue)
+                      const[setName,stateUpdateFunctionName]=useState(initialvalue)
+
+                =>useEffect()   :used to add side effect to a component
+                        useEffect(effect,dependency)
+                        ->dependency can be in three ways:
+                            1.no dependency :effect will apply all time in component
+                            2.empty array  : effect will apply only at the creation of the component.
+                            3.[variable_name, ....] :effect will apply not only at the creation of the component but also variable changes in component
+                =>useRef() : used to store mutable data without rerendering the components .it also helps to get the reference of a html elements in to components
+
+                    useRef(initiValue) :it returns object called current
+
+        2.customised Hooks  :create a js file with name starts with "use" and inside the file define js function to complete task.
+
+    Haandling form in React
+    --------------------------
+        ->React handle input data mainly in two ways 
+            1.controlled components -
+                here input data will store inside the component state so component has more controll over the form data
+            2.uncontrolled components :here component can get the reference of input tag to get the input tag ,component doesnt have more controll over the form data 
+
+    setup Route / path/ url to a component
+    --------------------------------------
+    ->install react-router-dom-library :npm i react-router-dom
+    ->setup path for component using react router dom
+       1.entire react must be render inside "BrowserRouter" of react router dom library
+       2.place all components need to be setup path inside Routes component, inside Routes use Route component to setup path for component using path and element attribute
+
+        
+
