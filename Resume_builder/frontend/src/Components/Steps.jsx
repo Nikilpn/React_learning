@@ -162,7 +162,16 @@ function Steps() {
     return (
         <>
             <Box sx={{ width: '100%' }}>
-                <Stepper activeStep={activeStep}>
+                <Stepper activeStep={activeStep} sx={{
+                    padding: "0px",
+                    '& .MuiStep-root': {
+                        paddingLeft: "2px",
+                        paddingRight: "2px"
+                    },
+                    '& .MuiStepLabel-label': {
+                        fontSize: "11px"
+                    }
+                }}>
                     {steps.map((label, index) => {
                         const stepProps = {};
                         const labelProps = {};
