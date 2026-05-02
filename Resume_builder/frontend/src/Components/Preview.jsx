@@ -8,6 +8,7 @@ import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider';
 import Edit from './Edit';
 
+
 function Preview() {
     return (
         <>
@@ -18,12 +19,12 @@ function Preview() {
 
 
                 {/* Download*/}
-                <button className='btn btn-primary'><FaFileDownload /></button>
+               <p> <Link><button className='btn btn-primary'><FaFileDownload /></button></Link></p>
 
                 {/* History*/}
-                <button className='btn btn-primary'><FaHistory /></button>
+               <p> <Link href={"/history"}><button className='btn btn-primary'><FaHistory /></button></Link></p>
 
-
+                <Link href={'/'}><p  className='btn text-primary'>BACK</p></Link>
 
 
             </Stack>

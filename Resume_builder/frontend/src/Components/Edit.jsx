@@ -5,8 +5,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-
-
+import { Link } from 'react-router-dom'
 const style = {
     position: 'absolute',
     top: '50%',
@@ -28,7 +27,7 @@ function Edit() {
     const handleClose = () => setOpen(false);
     return (
         <>
-            <button onClick={handleOpen} className='btn btn-primary'><FaRegEdit /></button>
+           <Link > <button onClick={handleOpen} className='btn btn-primary'><FaRegEdit /></button></Link>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -93,7 +92,7 @@ function Edit() {
                             <div className='row p-3'>
                                 <div className='d-flex align-items-center justify-content-between'>
                                     <TextField sx={{ width: "350px" }} id="summary" label="Enter Skills" variant="standard" />
-                                    <Button variant='outlined'>ADD</Button>
+                                <Button variant='outlined'>ADD</Button>
                                 </div>
                             </div>
                             <div className='mt-4'>
