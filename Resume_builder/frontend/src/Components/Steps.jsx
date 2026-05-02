@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -13,6 +13,38 @@ const skillsSuggestionArray = ["REACT", "JAVASCRIPT", "PYTHON", "DJANGO", 'MONGO
 function Steps() {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
+
+    const[userInput,setUserInput]=useState({
+        professionalData:{
+            name:"",
+            jobTitle:"",
+            location:"",
+            email:"",
+            phone:"",
+            github:"",
+            linkedin:"",
+            portfolio:"",
+
+
+        },
+        educationalData:{
+            course:"",
+            college:"",
+            university:"",
+            year:""
+        },
+        experience:{
+            jobrole:"",
+            company:"",
+            joblocation:"",
+            duration:""
+        },
+        skills:[],
+        summary:""
+
+    })
+    console.log(userInput);
+    
 
     const isStepOptional = (step) => {
         return step === 1;
@@ -62,9 +94,9 @@ function Steps() {
                 <div>
                     <h1>Personal Details</h1>
                     <div className='row p-3'>
-                        <TextField id="full-name" label="Full Name" variant="standard" />
-                        <TextField id="job-title" label="Job Title" variant="standard" />
-                        <TextField id="location" label="Location" variant="standard" />
+                        <TextField value={userInput.professionalData.name} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,name:e.target.value}})} id="full-name" label="Full Name" variant="standard" />
+                        <TextField value={userInput.professionalData.jobTitle} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,jobTitle:e.target.value}})} id="job-title" label="Job Title" variant="standard" />
+                        <TextField value={userInput.professionalData.location}  onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,location:e.target.value}})} id="location" label="Location" variant="standard" />
 
                     </div>
                 </div>
@@ -73,11 +105,11 @@ function Steps() {
                 <div>
                     <h1>Contact Details</h1>
                     <div className='row p-3'>
-                        <TextField id="email" label="Email" variant="standard" />
-                        <TextField id="phone" label="Phone" variant="standard" />
-                        <TextField id="github" label="Git Profile Link" variant="standard" />
-                        <TextField id="linkedin" label="Linkedin Profile Link" variant="standard" />
-                        <TextField id="portfolio" label="Portfolio Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.email}  onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,email:e.target.value}})} id="email" label="Email" variant="standard" />
+                        <TextField value={userInput.professionalData.phone} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,phone:e.target.value}})} id="phone" label="Phone" variant="standard" />
+                        <TextField value={userInput.professionalData.github} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,github:e.target.value}})} id="github" label="Git Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.linkedin} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,linkedin:e.target.value}})} id="linkedin" label="Linkedin Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.portfolio} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,portfolio:e.target.value}})} id="portfolio" label="Portfolio Profile Link" variant="standard" />
 
 
                     </div>
@@ -89,10 +121,10 @@ function Steps() {
                 <div>
                     <h1>Education Details</h1>
                     <div className='row p-3'>
-                        <TextField id="course-name" label="Course Name" variant="standard" />
-                        <TextField id="college-name" label="College Name" variant="standard" />
-                        <TextField id="university" label="University" variant="standard" />
-                        <TextField id="year-of-passout" label="Year Of Passout" variant="standard" />
+                        <TextField value={userInput.educationalData.course} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,course:e.target.value}})} id="course-name" label="Course Name" variant="standard" />
+                        <TextField value={userInput.educationalData.college} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,college:e.target.value}})} id="college-name" label="College Name" variant="standard" />
+                        <TextField value={userInput.educationalData.university} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,university:e.target.value}})} id="university" label="University" variant="standard" />
+                        <TextField value={userInput.educationalData.year} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,year:e.target.value}})} id="year-of-passout" label="Year Of Passout" variant="standard" />
 
 
                     </div>
@@ -104,10 +136,10 @@ function Steps() {
                 <div>
                     <h1>Professional Details</h1>
                     <div className='row p-3'>
-                        <TextField id="job-or-intern" label="Job-Or-Intern" variant="standard" />
-                        <TextField id="company-name" label="Company-Name" variant="standard" />
-                        <TextField id="location" label="Location" variant="standard" />
-                        <TextField id="duration" label="Duration" variant="standard" />
+                        <TextField  value={userInput.experience.jobrole} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,jobrole:e.target.value}})} id="job-or-intern" label="Job-Or-Intern" variant="standard" />
+                        <TextField  value={userInput.experience.company} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,company:e.target.value}})} id="company-name" label="Company-Name" variant="standard" />
+                        <TextField  value={userInput.experience.joblocation} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,joblocation:e.target.value}})} id="location" label="Location" variant="standard" />
+                        <TextField  value={userInput.experience.duration} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,duration:e.target.value}})} id="duration" label="Duration" variant="standard" />
 
 
 
@@ -121,7 +153,7 @@ function Steps() {
                     <h1>Skills</h1>
                     <div className='row p-3'>
                         <div className='d-flex align-items-center justify-content-between'>
-                            <TextField sx={{ width: "350px" }} id="summary" label="Enter Skills" variant="standard" />
+                            <TextField  sx={{ width: "350px" }} id="summary" label="Enter Skills" variant="standard" />
                             <Button variant='outlined'>ADD</Button>
                         </div>
                     </div>
@@ -146,7 +178,7 @@ function Steps() {
                 <div>
                     <h1>Professional Summary</h1>
                     <div className='row p-3'>
-                        <TextField multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
+                        <TextField value={userInput.summary.summary}  onChange={(e)=>setUserInput({...userInput,summary:{...userInput.summary,jobrole:e.target.value}})} multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
 
 
 
