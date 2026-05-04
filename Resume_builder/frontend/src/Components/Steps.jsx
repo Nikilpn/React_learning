@@ -174,7 +174,7 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Professional Summary</h1>
                     <div className='row p-3'>
-                        <TextField value={userInput.summary.summary}  onChange={(e)=>setUserInput({...userInput,summary:{...userInput.summary,jobrole:e.target.value}})} multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
+                        <TextField value={userInput.summary.summary}  onChange={(e)=>setUserInput({...userInput,summary: e.target.value})} multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
 
 
 

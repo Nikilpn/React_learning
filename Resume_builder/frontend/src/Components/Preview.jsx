@@ -32,38 +32,35 @@ function Preview({userInput}) {
             </Stack>
             <Box sx={{ textAlign: 'center' }}>
                 <Paper elevation={3} sx={{ p: 5 }}>
-                    <h2>Graceson J</h2>
-                    <h6>Web Developer</h6>
-                    <p><span>Kakkanad</span> | <span>graceson@gmail.com</span> | <span>7894561238</span></p>
+                    <h2>{userInput.professionalData.name}</h2>
+                    <h6>{userInput.professionalData.jobTitle}</h6>
+                    <p><span>{userInput.professionalData.location}</span> | <span>{userInput.professionalData.email}</span> | <span>{userInput.professionalData.phone}</span></p>
 
                     <div className='d-flex gap-3 justify-content-center'>
-                        <Link href={""}>GITHUB</Link> |
-                        <Link href={""}>LINKEDIN</Link> |
-                        <Link href={""}>PORTFOLIO</Link>
+                        <Link href={userInput.professionalData.github}>GITHUB</Link> |
+                        <Link href={userInput.professionalData.linkedin}>LINKEDIN</Link> |
+                        <Link href={userInput.professionalData.linkedin}>PORTFOLIO</Link>
                     </div>
 
                     <Divider sx={{ marginTop: "20px" }}>SUMMARY</Divider>
 
-                    <p style={{ textAlign: "justify" }}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Iusto, suscipit. Voluptates ipsa unde corrupti veniam rerum praesentium exercitationem!
-                        Aliquam libero delectus ab nesciunt voluptatibus, vel labore numquam ducimus explicabo ea!
-                    </p>
+                    <p style={{ textAlign: "justify" }}> {userInput.summary} </p>
 
                     <Divider sx={{ marginTop: "20px" }}>Education</Divider>
 
-                    <h4>B.tech</h4>
-                    <p>SRM COLLEGE | SRM UNIVERSITY | 2025</p>
+                    <h4>{userInput.educationalData.course}</h4>
+                    <p>{userInput.educationalData.college} | {userInput.educationalData.university} | {userInput.educationalData.year}</p>
 
                     <Divider sx={{ marginTop: "20px" }}>Professional Experience</Divider>
 
-                    <h4>MERN FULL STACK</h4>
-                    <p>Luminar Technolab | Kakkanad | 6months</p>
+                    <h4>{userInput.experience.jobrole}</h4>
+                    <p>{userInput.experience.company} | {userInput.experience.joblocation} | {userInput.experience.duration}</p>
 
                     <Divider sx={{ marginTop: "20px" }}>Skills</Divider>
 
                     <div className='d-flex flex-wrap gap-3'>
-                        <Button variant='outlined'> REACT </Button>
+                        {userInput.skills.map((item)=>(<Button key={item} variant='outlined'> {item} </Button>))}
+                        
                     </div>
                 </Paper>
 
