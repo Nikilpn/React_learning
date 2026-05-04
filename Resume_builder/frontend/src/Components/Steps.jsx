@@ -10,40 +10,14 @@ import TextField from '@mui/material/TextField';
 const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Work Experience', 'Skills & Certifications', 'Review & Submit'];
 const skillsSuggestionArray = ["REACT", "JAVASCRIPT", "PYTHON", "DJANGO", 'MONGODB', "HTML", "CSS"]
 
-function Steps() {
+function Steps({userInput,setUserInput}) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
-    const[userInput,setUserInput]=useState({
-        professionalData:{
-            name:"",
-            jobTitle:"",
-            location:"",
-            email:"",
-            phone:"",
-            github:"",
-            linkedin:"",
-            portfolio:"",
+    const[inputSkill,setInputSkill]=useState("")
 
-
-        },
-        educationalData:{
-            course:"",
-            college:"",
-            university:"",
-            year:""
-        },
-        experience:{
-            jobrole:"",
-            company:"",
-            joblocation:"",
-            duration:""
-        },
-        skills:[],
-        summary:""
-
-    })
-    console.log(userInput);
+    
+    // console.log(userInput);
     
 
     const isStepOptional = (step) => {
@@ -87,6 +61,25 @@ function Steps() {
     const handleReset = () => {
         setActiveStep(0);
     };
+
+    const addSkill=(inputSkill)=>{
+        console.log("user input skill :"+inputSkill);
+        if(inputSkill){
+            if(userInput.skills.includes(inputSkill)){
+                alert("Given Skill Already Exists....Add New skills")
+            }
+            else{
+                setUserInput({...userInput,skills:[...userInput.skills,inputSkill]})
+            }
+        }
+        
+
+    }
+    const removeSkill=(skills)=>{
+        console.log(skill);
+        setUserInput({...userInput,skills:userInput.skills.filter(item=>item!=skills)})
+        
+    }
 
     const renderStepArrayContent = (stepCount) => {
         switch (stepCount) {
@@ -153,23 +146,26 @@ function Steps() {
                     <h1>Skills</h1>
                     <div className='row p-3'>
                         <div className='d-flex align-items-center justify-content-between'>
-                            <TextField  sx={{ width: "350px" }} id="summary" label="Enter Skills" variant="standard" />
-                            <Button variant='outlined'>ADD</Button>
+                            <TextField onChange={(e)=>setInputSkill(e.target.value)} id="skill" sx={{ width: "350px" }}label="Enter Skills"  variant="standard" />
+                            <Button value={inputSkill} onClick={()=>addSkill(inputSkill)}  variant='outlined'>ADD</Button>
                         </div>
                     </div>
                     <div className='mt-4'>
                         <h4>Suggestions :</h4>
                         <div className='d-flex gap-2 flex-wrap mt-3'>
                             {skillsSuggestionArray.map((userSkill) => (
-                                <Button key={userSkill} variant='contained'>{userSkill}</Button>
+                                <Button key={userSkill} onClick={()=>addSkill(userSkill)} variant='contained'>{userSkill}</Button>
                             ))}
                         </div>
                     </div>
                     <div className='mt-3'>
                         <h4>Added Skills :</h4>
-                        <div className='mt-2'>
-                            <span className='btn btn-primary me-3'>REACT <button className='text light btn'>X</button></span>
-                        </div>
+                        {
+                            userInput.skills.map((item)=>(
+                                <span key={item} className='btn btn-primary me-3 mb-2' ><button className='text-light btn' onClick={()=>removeSkill(item)}>{item}  X</button></span>
+                            ))
+                        }
+                   
                     </div>
 
                 </div>

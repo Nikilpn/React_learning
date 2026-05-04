@@ -9,7 +9,9 @@ import Divider from '@mui/material/Divider';
 import Edit from './Edit';
 
 
-function Preview() {
+function Preview({userInput}) {
+    console.log(userInput);
+    
     return (
         <>
             <Stack direction={'row'} sx={{ display: "flex", justifyContent: "end", padding: "50px", gap: "10px" }}>
