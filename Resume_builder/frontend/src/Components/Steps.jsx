@@ -6,19 +6,20 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { addResumeApi } from '../../service/allAPI';
 
 const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Work Experience', 'Skills & Certifications', 'Review & Submit'];
 const skillsSuggestionArray = ["REACT", "JAVASCRIPT", "PYTHON", "DJANGO", 'MONGODB', "HTML", "CSS"]
 
-function Steps({userInput,setUserInput}) {
+function Steps({ userInput, setUserInput }) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
-    const[inputSkill,setInputSkill]=useState("")
+    const [inputSkill, setInputSkill] = useState("")
 
-    
+
     // console.log(userInput);
-    
+
 
     const isStepOptional = (step) => {
         return step === 1;
@@ -62,23 +63,23 @@ function Steps({userInput,setUserInput}) {
         setActiveStep(0);
     };
 
-    const addSkill=(inputSkill)=>{
-        console.log("user input skill :"+inputSkill);
-        if(inputSkill){
-            if(userInput.skills.includes(inputSkill)){
+    const addSkill = (inputSkill) => {
+        console.log("user input skill :" + inputSkill);
+        if (inputSkill) {
+            if (userInput.skills.includes(inputSkill)) {
                 alert("Given Skill Already Exists....Add New skills")
             }
-            else{
-                setUserInput({...userInput,skills:[...userInput.skills,inputSkill]})
+            else {
+                setUserInput({ ...userInput, skills: [...userInput.skills, inputSkill] })
             }
         }
-        
+
 
     }
-    const removeSkill=(skills)=>{
+    const removeSkill = (skills) => {
         console.log(skill);
-        setUserInput({...userInput,skills:userInput.skills.filter(item=>item!=skills)})
-        
+        setUserInput({ ...userInput, skills: userInput.skills.filter(item => item != skills) })
+
     }
 
     const renderStepArrayContent = (stepCount) => {
@@ -87,9 +88,9 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Personal Details</h1>
                     <div className='row p-3'>
-                        <TextField value={userInput.professionalData.name} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,name:e.target.value}})} id="full-name" label="Full Name" variant="standard" />
-                        <TextField value={userInput.professionalData.jobTitle} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,jobTitle:e.target.value}})} id="job-title" label="Job Title" variant="standard" />
-                        <TextField value={userInput.professionalData.location}  onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,location:e.target.value}})} id="location" label="Location" variant="standard" />
+                        <TextField value={userInput.professionalData.name} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, name: e.target.value } })} id="full-name" label="Full Name" variant="standard" />
+                        <TextField value={userInput.professionalData.jobTitle} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, jobTitle: e.target.value } })} id="job-title" label="Job Title" variant="standard" />
+                        <TextField value={userInput.professionalData.location} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, location: e.target.value } })} id="location" label="Location" variant="standard" />
 
                     </div>
                 </div>
@@ -98,11 +99,11 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Contact Details</h1>
                     <div className='row p-3'>
-                        <TextField value={userInput.professionalData.email}  onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,email:e.target.value}})} id="email" label="Email" variant="standard" />
-                        <TextField value={userInput.professionalData.phone} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,phone:e.target.value}})} id="phone" label="Phone" variant="standard" />
-                        <TextField value={userInput.professionalData.github} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,github:e.target.value}})} id="github" label="Git Profile Link" variant="standard" />
-                        <TextField value={userInput.professionalData.linkedin} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,linkedin:e.target.value}})} id="linkedin" label="Linkedin Profile Link" variant="standard" />
-                        <TextField value={userInput.professionalData.portfolio} onChange={(e)=>setUserInput({...userInput,professionalData:{...userInput.professionalData,portfolio:e.target.value}})} id="portfolio" label="Portfolio Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.email} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, email: e.target.value } })} id="email" label="Email" variant="standard" />
+                        <TextField value={userInput.professionalData.phone} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, phone: e.target.value } })} id="phone" label="Phone" variant="standard" />
+                        <TextField value={userInput.professionalData.github} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, github: e.target.value } })} id="github" label="Git Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.linkedin} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, linkedin: e.target.value } })} id="linkedin" label="Linkedin Profile Link" variant="standard" />
+                        <TextField value={userInput.professionalData.portfolio} onChange={(e) => setUserInput({ ...userInput, professionalData: { ...userInput.professionalData, portfolio: e.target.value } })} id="portfolio" label="Portfolio Profile Link" variant="standard" />
 
 
                     </div>
@@ -114,10 +115,10 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Education Details</h1>
                     <div className='row p-3'>
-                        <TextField value={userInput.educationalData.course} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,course:e.target.value}})} id="course-name" label="Course Name" variant="standard" />
-                        <TextField value={userInput.educationalData.college} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,college:e.target.value}})} id="college-name" label="College Name" variant="standard" />
-                        <TextField value={userInput.educationalData.university} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,university:e.target.value}})} id="university" label="University" variant="standard" />
-                        <TextField value={userInput.educationalData.year} onChange={(e)=>setUserInput({...userInput,educationalData:{...userInput.educationalData,year:e.target.value}})} id="year-of-passout" label="Year Of Passout" variant="standard" />
+                        <TextField value={userInput.educationalData.course} onChange={(e) => setUserInput({ ...userInput, educationalData: { ...userInput.educationalData, course: e.target.value } })} id="course-name" label="Course Name" variant="standard" />
+                        <TextField value={userInput.educationalData.college} onChange={(e) => setUserInput({ ...userInput, educationalData: { ...userInput.educationalData, college: e.target.value } })} id="college-name" label="College Name" variant="standard" />
+                        <TextField value={userInput.educationalData.university} onChange={(e) => setUserInput({ ...userInput, educationalData: { ...userInput.educationalData, university: e.target.value } })} id="university" label="University" variant="standard" />
+                        <TextField value={userInput.educationalData.year} onChange={(e) => setUserInput({ ...userInput, educationalData: { ...userInput.educationalData, year: e.target.value } })} id="year-of-passout" label="Year Of Passout" variant="standard" />
 
 
                     </div>
@@ -129,10 +130,10 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Professional Details</h1>
                     <div className='row p-3'>
-                        <TextField  value={userInput.experience.jobrole} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,jobrole:e.target.value}})} id="job-or-intern" label="Job-Or-Intern" variant="standard" />
-                        <TextField  value={userInput.experience.company} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,company:e.target.value}})} id="company-name" label="Company-Name" variant="standard" />
-                        <TextField  value={userInput.experience.joblocation} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,joblocation:e.target.value}})} id="location" label="Location" variant="standard" />
-                        <TextField  value={userInput.experience.duration} onChange={(e)=>setUserInput({...userInput,experience:{...userInput.experience,duration:e.target.value}})} id="duration" label="Duration" variant="standard" />
+                        <TextField value={userInput.experience.jobrole} onChange={(e) => setUserInput({ ...userInput, experience: { ...userInput.experience, jobrole: e.target.value } })} id="job-or-intern" label="Job-Or-Intern" variant="standard" />
+                        <TextField value={userInput.experience.company} onChange={(e) => setUserInput({ ...userInput, experience: { ...userInput.experience, company: e.target.value } })} id="company-name" label="Company-Name" variant="standard" />
+                        <TextField value={userInput.experience.joblocation} onChange={(e) => setUserInput({ ...userInput, experience: { ...userInput.experience, joblocation: e.target.value } })} id="location" label="Location" variant="standard" />
+                        <TextField value={userInput.experience.duration} onChange={(e) => setUserInput({ ...userInput, experience: { ...userInput.experience, duration: e.target.value } })} id="duration" label="Duration" variant="standard" />
 
 
 
@@ -146,26 +147,26 @@ function Steps({userInput,setUserInput}) {
                     <h1>Skills</h1>
                     <div className='row p-3'>
                         <div className='d-flex align-items-center justify-content-between'>
-                            <TextField onChange={(e)=>setInputSkill(e.target.value)} id="skill" sx={{ width: "350px" }}label="Enter Skills"  variant="standard" />
-                            <Button value={inputSkill} onClick={()=>addSkill(inputSkill)}  variant='outlined'>ADD</Button>
+                            <TextField onChange={(e) => setInputSkill(e.target.value)} id="skill" sx={{ width: "350px" }} label="Enter Skills" variant="standard" />
+                            <Button value={inputSkill} onClick={() => addSkill(inputSkill)} variant='outlined'>ADD</Button>
                         </div>
                     </div>
                     <div className='mt-4'>
                         <h4>Suggestions :</h4>
                         <div className='d-flex gap-2 flex-wrap mt-3'>
                             {skillsSuggestionArray.map((userSkill) => (
-                                <Button key={userSkill} onClick={()=>addSkill(userSkill)} variant='contained'>{userSkill}</Button>
+                                <Button key={userSkill} onClick={() => addSkill(userSkill)} variant='contained'>{userSkill}</Button>
                             ))}
                         </div>
                     </div>
                     <div className='mt-3'>
                         <h4>Added Skills :</h4>
                         {
-                            userInput.skills.map((item)=>(
-                                <span key={item} className='btn btn-primary me-3 mb-2' ><button className='text-light btn' onClick={()=>removeSkill(item)}>{item}  X</button></span>
+                            userInput.skills.map((item) => (
+                                <span key={item} className='btn btn-primary me-3 mb-2' ><button className='text-light btn' onClick={() => removeSkill(item)}>{item}  X</button></span>
                             ))
                         }
-                   
+
                     </div>
 
                 </div>
@@ -174,7 +175,7 @@ function Steps({userInput,setUserInput}) {
                 <div>
                     <h1>Professional Summary</h1>
                     <div className='row p-3'>
-                        <TextField value={userInput.summary.summary}  onChange={(e)=>setUserInput({...userInput,summary: e.target.value})} multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
+                        <TextField value={userInput.summary.summary} onChange={(e) => setUserInput({ ...userInput, summary: e.target.value })} multiline rows={5} id="summary" label="Write a short note on yourself" variant="standard" />
 
 
 
@@ -184,6 +185,37 @@ function Steps({userInput,setUserInput}) {
 
 
             )
+        }
+    }
+    const handleAddResume = async () => {
+
+        const { professionalData, educationalData, experience, skills, summary } = userInput
+
+        const { name, jobTitle, location, email, phone } = professionalData
+        const { course, college, university, year } = educationalData
+        const { jobrole, company, joblocation, duration } = experience
+
+      
+        if (
+            !name || !jobTitle || !location ||
+            !email || !phone ||
+            !course || !college || !university || !year ||
+            !jobrole || !company || !joblocation || !duration ||
+            skills.length === 0 ||
+            !summary
+        ) {
+            alert(" Please fill all fields properly!")
+            return
+        }
+
+        //  API call
+        try {
+            const result = await addResumeApi(userInput)
+            console.log(result)
+            alert(" Resume added successfully!")
+        } catch (err) {
+            console.log(err)
+            alert(" Resume add failed!")
         }
     }
 
@@ -226,6 +258,7 @@ function Steps({userInput,setUserInput}) {
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                             <Box sx={{ flex: '1 1 auto' }} />
                             <Button onClick={handleReset}>Reset</Button>
+                            <Button variant='contained' className='ms-5' onClick={handleAddResume}>Add Resume</Button>
                         </Box>
                     </React.Fragment>
                 ) : (

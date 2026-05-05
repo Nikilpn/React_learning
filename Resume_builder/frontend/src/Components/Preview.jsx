@@ -9,24 +9,24 @@ import Divider from '@mui/material/Divider';
 import Edit from './Edit';
 
 
-function Preview({userInput}) {
+function Preview({ userInput }) {
     console.log(userInput);
-    
+
     return (
         <>
             <Stack direction={'row'} sx={{ display: "flex", justifyContent: "end", padding: "50px", gap: "10px" }}>
                 {/*edit */}
-                <Edit/>
+                <Edit />
                 {/* <button className='btn btn-primary'><FaRegEdit /></button> */}
 
 
                 {/* Download*/}
-               <p> <Link><button className='btn btn-primary'><FaFileDownload /></button></Link></p>
+                <p> <Link><button className='btn btn-primary'><FaFileDownload /></button></Link></p>
 
                 {/* History*/}
-               <p> <Link href={"/history"}><button className='btn btn-primary'><FaHistory /></button></Link></p>
+                <p> <Link href={"/history"}><button className='btn btn-primary'><FaHistory /></button></Link></p>
 
-                <Link href={'/'}><p  className='btn text-primary'>BACK</p></Link>
+                <Link href={'/'}><p className='btn text-primary'>BACK</p></Link>
 
 
             </Stack>
@@ -37,9 +37,19 @@ function Preview({userInput}) {
                     <p><span>{userInput.professionalData.location}</span> | <span>{userInput.professionalData.email}</span> | <span>{userInput.professionalData.phone}</span></p>
 
                     <div className='d-flex gap-3 justify-content-center'>
-                        <Link href={userInput.professionalData.github}>GITHUB</Link> |
-                        <Link href={userInput.professionalData.linkedin}>LINKEDIN</Link> |
-                        <Link href={userInput.professionalData.linkedin}>PORTFOLIO</Link>
+
+                        <span style={{ color: "#3498DB", textDecoration: "underline" }}>
+                            {userInput.professionalData.github || "GITHUB"}
+                        </span> |
+
+                        <span style={{ color: "#3498DB", textDecoration: "underline" }}>
+                            {userInput.professionalData.linkedin || "LINKEDIN"}
+                        </span> |
+
+                        <span style={{ color: "#3498DB", textDecoration: "underline" }}>
+                            {userInput.professionalData.portfolio || "PORTFOLIO"}
+                        </span>
+
                     </div>
 
                     <Divider sx={{ marginTop: "20px" }}>SUMMARY</Divider>
@@ -59,8 +69,8 @@ function Preview({userInput}) {
                     <Divider sx={{ marginTop: "20px" }}>Skills</Divider>
 
                     <div className='d-flex flex-wrap gap-3'>
-                        {userInput.skills.map((item)=>(<Button key={item} variant='outlined'> {item} </Button>))}
-                        
+                        {userInput.skills.map((item) => (<Button key={item} variant='outlined'> {item} </Button>))}
+
                     </div>
                 </Paper>
 
