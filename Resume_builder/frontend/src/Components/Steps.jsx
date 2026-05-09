@@ -7,18 +7,21 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import { addResumeApi } from '../../service/allAPI';
+import Swal from 'sweetalert2'
 
 const steps = ['Basic Information', 'Contact Details', 'Education Details', 'Work Experience', 'Skills & Certifications', 'Review & Submit'];
 const skillsSuggestionArray = ["REACT", "JAVASCRIPT", "PYTHON", "DJANGO", 'MONGODB', "HTML", "CSS"]
 
-function Steps({ userInput, setUserInput }) {
+function Steps({ userInput, setUserInput,SetResumeAdded,setIsResumeId }) {
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set());
 
     const [inputSkill, setInputSkill] = useState("")
 
+    
+    
 
-    // console.log(userInput);
+
 
 
     const isStepOptional = (step) => {
@@ -195,7 +198,7 @@ function Steps({ userInput, setUserInput }) {
         const { course, college, university, year } = educationalData
         const { jobrole, company, joblocation, duration } = experience
 
-      
+
         if (
             !name || !jobTitle || !location ||
             !email || !phone ||
@@ -203,8 +206,15 @@ function Steps({ userInput, setUserInput }) {
             !jobrole || !company || !joblocation || !duration ||
             skills.length === 0 ||
             !summary
-        ) {
-            alert(" Please fill all fields properly!")
+        ) 
+            
+        {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Please fill all fields properly!",
+
+            });
             return
         }
 
@@ -212,10 +222,24 @@ function Steps({ userInput, setUserInput }) {
         try {
             const result = await addResumeApi(userInput)
             console.log(result)
-            alert(" Resume added successfully!")
+            SetResumeAdded(true)
+            // console.log(result.data.id);
+            setIsResumeId(result.data.id)
+            
+            Swal.fire({
+                title: "Good job!",
+                text: "Resume Added Successfully!",
+                icon: "success"
+            });
+           
         } catch (err) {
             console.log(err)
-            alert(" Resume add failed!")
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!",
+
+            });
         }
     }
 

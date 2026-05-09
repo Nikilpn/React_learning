@@ -9,20 +9,26 @@ import Divider from '@mui/material/Divider';
 import Edit from './Edit';
 
 
-function Preview({ userInput }) {
+function Preview({ userInput, isResumeAdded,resumeId ,setUserInput}) {
     console.log(userInput);
 
     return (
         <>
             <Stack direction={'row'} sx={{ display: "flex", justifyContent: "end", padding: "50px", gap: "10px" }}>
-                {/*edit */}
-                <Edit />
-                {/* <button className='btn btn-primary'><FaRegEdit /></button> */}
+                {
+                    isResumeAdded &&
+                    <div style={{ display: "flex", gap: "10px", justifyContent: "flex-end" }}>
 
+                        <Edit resumeId={resumeId} setUserInput={setUserInput} />
 
-                {/* Download*/}
-                <p> <Link><button className='btn btn-primary'><FaFileDownload /></button></Link></p>
+                        <Link>
+                            <button className='btn btn-primary'>
+                                <FaFileDownload />
+                            </button>
+                        </Link>
 
+                    </div>
+                }
                 {/* History*/}
                 <p> <Link href={"/history"}><button className='btn btn-primary'><FaHistory /></button></Link></p>
 
