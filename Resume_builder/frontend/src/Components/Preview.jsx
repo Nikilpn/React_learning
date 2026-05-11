@@ -11,20 +11,47 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 
-function Preview({ userInput, isResumeAdded,resumeId ,setUserInput}) {
+function Preview({ userInput, isResumeAdded, resumeId, setUserInput }) {
     console.log(userInput);
-    const downloadPDF = async () => {
-    const input = document.getElementById("result"); // to get the id
-    const canvas = await html2canvas(input, { scale: 2 }); // convert the selected html to canvas (screenshot)
-    const imgData = canvas.toDataURL("image/png"); // convert canvas into image url
+    //     const downloadPDF = async () => {
+    //     const input = document.getElementById("result"); // to get the id
+    //     const canvas = await html2canvas(input, { scale: 2 }); // convert the selected html to canvas (screenshot)
+    //     const imgData = canvas.toDataURL("image/png"); // convert canvas into image url
 
-    // pdf
-    const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    pdf.addImage(imgData, "png", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("resume.pdf");
-  }
+    //     // pdf
+    //     const pdf = new jsPDF("p", "mm", "a4");
+    //     const pdfWidth = pdf.internal.pageSize.getWidth();
+    //     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    //     pdf.addImage(imgData, "png", 0, 0, pdfWidth, pdfHeight);
+    //     pdf.save("resume.pdf");
+    //   }
+    const downloadPDF = async () => {
+        const input = document.getElementById("result");
+        const canvas = await html2canvas(input, { scale: 2 });
+        const imgData = canvas.toDataURL("image/png");
+
+        const pdf = new jsPDF("p", "mm", "a4");
+        const pdfWidth = pdf.internal.pageSize.getWidth();   // 210mm
+        const pdfHeight = pdf.internal.pageSize.getHeight(); // 297mm
+
+        const imgWidth = pdfWidth;
+        const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+
+        let heightLeft = imgHeight;
+        let position = 0;
+
+        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+        heightLeft -= pdfHeight;
+
+        while (heightLeft > 0) {
+            position = heightLeft - imgHeight;
+            pdf.addPage();
+            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
+            heightLeft -= pdfHeight;
+        }
+
+        pdf.save("resume.pdf");
+    };
 
 
     return (
@@ -52,7 +79,7 @@ function Preview({ userInput, isResumeAdded,resumeId ,setUserInput}) {
 
             </Stack>
             <Box sx={{ textAlign: 'center' }}>
-               <Paper elevation={3} sx={{ p: 5 }} id="result">
+                <Paper elevation={3} sx={{ p: 5 }} id="result">
                     <h2>{userInput.professionalData.name}</h2>
                     <h6>{userInput.professionalData.jobTitle}</h6>
                     <p><span>{userInput.professionalData.location}</span> | <span>{userInput.professionalData.email}</span> | <span>{userInput.professionalData.phone}</span></p>
