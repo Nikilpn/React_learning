@@ -11,7 +11,7 @@ const middleware = JSONServer.defaults()
 const router = JSONServer.router("db.json")
 
 // 4. define port to run the server
-const PORT = 3000 || process.env.PORT
+const PORT = process.env.PORT || 3000
 
 // 5. use middleware
 rBuilderServer.use(middleware)
