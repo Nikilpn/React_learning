@@ -184,4 +184,25 @@ API Haandling in React
 
 ->Data sharing Techinques in React
 -------------------------------
-1.state Lifting :To share data from an component to another by lifting the data to their common parent and parent can share the lifted state/data using react props with its children.
+1.state Lifting :To share data from one component to another by lifting the data to their common parent and parent can share the lifted state/data using react props with its children.
+
+JSON SERVER -REST  API Creation 
+--------------------------------
+    1.create a folder for json-SERVER
+    2.create json file to store data.
+    3.install json-server :npm i json-server
+    4.To run json file (available in location :3000):npx json-filename.json
+
+Deploying json server using node
+---------------------------------
+1.install stable version of json-server :npm i json-server@0.17.4
+2.create index.js file 
+3.inside index.js file
+    -import json-server
+    -create server using create method of the library json-server
+    -import json file
+    -create middleware using defaults()
+    -Define port number to run app in localhost 
+    -use middleware in server
+    -define routes for client request (api endpoint for server)
+    -run server for client request using listen method
