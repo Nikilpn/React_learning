@@ -5,9 +5,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+import CircularProgress from "@mui/material/CircularProgress"; 
 import { Link } from "react-router-dom";
 import { getResumeApi, updateResumeApi } from "../../service/allAPI";
 import Swal from 'sweetalert2'
+
 const style = {
     position: "absolute",
     top: "50%",
@@ -21,6 +23,7 @@ const style = {
     overflowY: "auto",
     maxHeight: "90vh",
 };
+
 function Edit({ resumeId, setUserInput }) {
     const [edituserInput, editsetUserInput] = useState({
         id: "",
@@ -50,6 +53,7 @@ function Edit({ resumeId, setUserInput }) {
         summary: "",
     });
     const [inputSkill, setInputSkill] = useState("");
+    const [loading, setLoading] = useState(false); 
 
     const skillsSuggestionArray = [
         "REACT",
@@ -61,9 +65,10 @@ function Edit({ resumeId, setUserInput }) {
         "CSS",
     ];
     const [open, setOpen] = React.useState(false);
+
+    
     const handleOpen = () => {
         setOpen(true);
-        getAResume();
     };
     const handleClose = () => setOpen(false);
     console.log(resumeId);
@@ -78,17 +83,22 @@ function Edit({ resumeId, setUserInput }) {
         }
     };
 
+
     useEffect(() => {
         if (open) {
             getAResume();
         }
     }, [open]);
+
     console.log(edituserInput);
+
+
     const updateResume = async () => {
+        if (loading) return;
+        setLoading(true);
         try {
             const result = await updateResumeApi(resumeId, edituserInput);
             console.log(result);
-
 
             if (result.status >= 200 && result.status < 300) {
                 Swal.fire({
@@ -97,9 +107,7 @@ function Edit({ resumeId, setUserInput }) {
                     icon: 'success',
                     confirmButtonText: 'Back'
                 });
-                // editsetUserInput(edituserInput);
                 setUserInput(result.data)
-
                 handleClose();
             } else {
                 Swal.fire({
@@ -117,6 +125,8 @@ function Edit({ resumeId, setUserInput }) {
                 icon: 'error',
                 confirmButtonText: 'Back'
             });
+        } finally {
+            setLoading(false); 
         }
     };
 
@@ -135,7 +145,6 @@ function Edit({ resumeId, setUserInput }) {
     };
     const removeSkill = (skills) => {
         console.log(skills);
-
         editsetUserInput({
             ...edituserInput,
             skills: edituserInput.skills.filter((item) => item !== skills),
@@ -491,12 +500,15 @@ function Edit({ resumeId, setUserInput }) {
                             </div>
                             <div className="d-flex justify-content-end gap-3">
                                 <Button variant="outlined">Cancel</Button>
+                  
                                 <Button
                                     type="button"
                                     onClick={updateResume}
                                     variant="contained"
+                                    disabled={loading}
+                                    startIcon={loading ? <CircularProgress size={16} color="inherit" /> : null}
                                 >
-                                    Update
+                                    {loading ? "Updating..." : "Update"}
                                 </Button>
                             </div>
                         </div>

@@ -174,5 +174,14 @@
        1.entire react must be render inside "BrowserRouter" of react router dom library
        2.place all components need to be setup path inside Routes component, inside Routes use Route component to setup path for component using path and element attribute
 
-        
+API Haandling in React
+------------------------
+->fetch method
+->Axios library ->promise Based http request handling
+        using ->axios (requestConfiguartion)
+        requestConfiguartion->is an object with predefined keys (method ,url,data,headers,...)        
+        Axios method ->(Get,Put,post,Delete):axios.get(url)
 
+->Data sharing Techinques in React
+-------------------------------
+1.state Lifting :To share data from an component to another by lifting the data to their common parent and parent can share the lifted state/data using react props with its children.
