@@ -1,26 +1,18 @@
 import axios from "axios";
 
-const BASE_URL='https://fakestoreapi.com'
+const BASE_URL = 'https://fakestoreapi.com';
 
-export const getAllProducts=async()=>{
-    const response=await axios.get(`${BASE_URL}/products`)
+export const getAllProducts = async () => {
+  const response = await axios.get(`${BASE_URL}/products`);
+  return response.data;
+};
 
-    return response.data;
+export const getProductId = async (id: string | undefined) => {
+  const response = await axios.get(`${BASE_URL}/products/${id}`);
+  return response.data;
+};
 
-}
-export const getProductId=async(id)=>{
-    const response=await axios.get(`${BASE_URL}/products/${id}`)
-
-    return response.data;
-
-}
-
-export const getProductImage=async(id)=>{
-    const response=await axios.get(`${BASE_URL}/products/${id}/image`)
-
-    return response.data;
-
-}
-
-
-
+export const getProductImage = async (id: string | undefined) => {
+  const response = await axios.get(`${BASE_URL}/products/${id}/image`);
+  return response.data;
+};
