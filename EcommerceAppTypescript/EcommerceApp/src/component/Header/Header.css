@@ -1,0 +1,22 @@
+.header{
+    background-color: #151a1f;
+    padding: 20px;
+    color:#ffff;
+    display: flex;
+    justify-content: space-between;
+
+}
+body{
+    margin: 0;
+}
+.header h1 {
+    margin: 0;
+
+}
+.log-out-button{
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
