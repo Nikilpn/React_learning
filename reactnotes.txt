@@ -206,3 +206,42 @@ Deploying json server using node
     -use middleware in server
     -define routes for client request (api endpoint for server)
     -run server for client request using listen method
+
+Redux
+------
+
+=> A JS library for predictable and maintainable global state management.
+
+=> Redux consists of 2 Library
+
+    1. Redux Toolkit - The official, opinionated, batteries-included toolset
+       for efficient Redux development
+
+       to install - npm install @reduxjs/toolkit
+
+       1. Store - Create a common storage - configureStore()
+
+       2. Actions - they are similar to function, to execute action it should
+          be dispatch from component, action output automatically return to
+          reducers in redux.
+
+          use createAction(), createAsyncThunk()
+
+       3. Reducer - used to update data in storage.
+          use createReducer()
+
+       slice - used to combine both action & Reducer,
+       use createSlice()
+
+
+    2. React Redux - Official React bindings for Redux
+
+       to install - npm install react-redux
+
+       Hooks:
+
+       - useDispatch(action-name()) :
+         hooks used to dispatch action from component.
+
+       - useSelector() :
+         used to select data from store
